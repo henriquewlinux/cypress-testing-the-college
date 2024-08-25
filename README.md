@@ -28,7 +28,7 @@ ___
 
 ## Test Scenarios
 
-The test scenarios are here 👉  [scenarios](https://github.com/henriquewlinux/cypress-testing-the-college/scenarios.md)
+The test scenarios are here 👉  [scenarios](https://github.com/henriquewlinux/cypress-testing-the-college/blob/main/scenarios.md)
 
 ___
 
