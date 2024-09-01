@@ -5,6 +5,9 @@
 - Verify if user should be able to do login with success
 - Verify if user should be not able to do login with invalid email
 - Verify if user should be not able to do login with invalid email - Mocking
+- Verify if user should be not able to do login with invalid password
+- Verify if user should be not able to do login with invalid password - Mocking
+
 
 ## Register
 

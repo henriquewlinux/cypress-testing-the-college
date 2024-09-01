@@ -37,7 +37,7 @@ describe('Feature Cart', () => {
         CartPage.checkEmptyCartLabel()
     })
 
-    it('Verify if user cannot activate discount with invalid coupon', () => {
+    it.only('Verify if user cannot activate discount with invalid coupon', () => {
 
         cy.visit('/')
         NavegatorHeaderPage.goToLogInForm()
@@ -53,12 +53,14 @@ describe('Feature Cart', () => {
         NavegatorHeaderPage.clickCartButton()
         CartPage.checkItemCart()
         AlertMessagesPage.modalAlertCartIsNotVisible()
+        cy.intercept('POST', 'http://10.50.0.15:4000/applydiscount').as('applydiscount')
         CartPage.inputPromoCode('invalidcode')
-        AlertMessagesPage.checkAlertInvalidPromoCode('Invalid discount code')   
+        cy.wait('@applydiscount')
+        AlertMessagesPage.checkAlertInvalidPromoCode('Invalid discount code')
         CartPage.clickRemoveItemCart()   
     })
 
-    it('Verify if user be able to apply discount with valid coupon', () => {
+    it.only('Verify if user be able to apply discount with valid coupon', () => {
 
         cy.visit('/')
         NavegatorHeaderPage.goToLogInForm()
@@ -74,7 +76,9 @@ describe('Feature Cart', () => {
         NavegatorHeaderPage.clickCartButton()
         CartPage.checkItemCart()
         AlertMessagesPage.modalAlertCartIsNotVisible()
+        cy.intercept('POST', 'http://10.50.0.15:4000/applydiscount').as('applydiscount')
         CartPage.inputPromoCode('WELCOME')
+        cy.wait('@applydiscount')
         AlertMessagesPage.checkAlertInvalidPromoCode('Discount applied successfully!')
         CartPage.clickRemoveItemCart()
     })

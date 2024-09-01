@@ -1,10 +1,10 @@
 export class SessionMenPage{
     private static readonly locators = {
-        itemSession: '.shopcategory-products .item'
+        itemSession: '[data-qa-locator="product-item"]'
     }
 
     static clickItemSession(item: number){
-        cy.get('.shopcategory-products .item').eq(item).click()
+        cy.get(this.locators.itemSession).eq(item).click()
     }
 
 }

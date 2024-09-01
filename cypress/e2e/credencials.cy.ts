@@ -17,7 +17,7 @@ describe('Feature Login', () => {
 
         cy.intercept('POST', '/login').as('loginrequest')
         LoginPage.doLogin(testUserData.mail, testUserData.password)
-        cy.wait('@loginrequest', {timeout: 20000})
+        cy.wait('@loginrequest', { timeout: 20000 })
         NavegatorHeaderPage.checkLabelLoggedIn(testUserData.name)
     })
 
@@ -35,6 +35,7 @@ describe('Feature Login', () => {
 
         AlertMessagesPage.alertMessageError('please try with correct email/password')
     })
+
     it('Verify if user should be not able to do login with invalid email - Mocking', () => {
 
         const testUserDataWithInvalidMail: UserData = {
@@ -51,12 +52,44 @@ describe('Feature Login', () => {
             body: {
                 "success": false,
                 "errors": "please try with correct email/password"
-              }
-          })
+            }
+        })
 
         LoginPage.doLogin2(testUserDataWithInvalidMail)
 
         AlertMessagesPage.alertMessageError('please try with correct email/password')
     })
+
+    it('Verify if user should be not able to do login with invalid password', () => {
+
+        cy.visit('/')
+
+        NavegatorHeaderPage.goToLogInForm()
+
+        cy.fixture('credencials.json').then((userData) => {
+            cy.doLogin(userData.userMailInvalid.mail, userData.userMailInvalid.password)
+        })
+        cy.alertMessage('please try with correct email/password')
+    })
+
+    it('Verify if user should be not able to do login with invalid password - Mocking', () => {
+
+        cy.visit('/')
+        NavegatorHeaderPage.goToLogInForm()
+
+        cy.intercept('POST', '/login', {
+            statusCode: 400,
+            body: {
+                "success": false,
+                "errors": "please try with correct email/password"
+            }
+        })
+
+        cy.fixture('credencials.json').then((userData) => {
+            cy.doLogin(userData.userPasswordInvalid.mail, userData.userPasswordInvalid.password)
+        })
+        cy.alertMessage('please try with correct email/password')
+    })
+
 
 })
