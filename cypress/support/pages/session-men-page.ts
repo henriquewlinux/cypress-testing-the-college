@@ -4,6 +4,7 @@ export class SessionMenPage{
     }
 
     static clickItemSession(item: number){
+        cy.get(this.locators.itemSession).eq(item).scrollIntoView()
         cy.get(this.locators.itemSession).eq(item).click()
     }
 

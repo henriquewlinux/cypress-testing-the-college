@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands/login-commands.ts'
 import './commands/alert-commands.ts'
+import './commands/register-commands.ts'
 import "allure-cypress";
 
 // Alternatively you can use CommonJS syntax:

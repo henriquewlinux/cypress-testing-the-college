@@ -3,10 +3,11 @@ const { allureCypress } = require("allure-cypress/reporter");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'http://10.50.0.15:3000',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      config.baseUrl = config.env[config.env['env']].baseUrl
+      config.env.backendUrl = config.env[config.env['env']].backendUrl
       allureCypress(on);
+      return config;
     },
   },
 });

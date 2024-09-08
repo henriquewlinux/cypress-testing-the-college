@@ -10,8 +10,8 @@ declare global {
     }
   }
 
-  function doLogin(mail: string, password: string){
-    cy.get(LoginPageElements.inputMail).type(mail)
+  function doLogin(email: string, password: string){
+    cy.get(LoginPageElements.inputMail).type(email)
     cy.get(LoginPageElements.inputPassword).type(password)
     cy.get(LoginPageElements.continueButton).click()
   }

@@ -10,13 +10,13 @@ export class LoginPage{
         cy.get(this.locators.buttonRegisterLink).click()
     }
 
-    static doLogin(mail: string, password: string){
-        CredencialsPage.informCredencials(mail, password)
+    static doLogin(email: string, password: string){
+        CredencialsPage.informCredencials(email, password)
         CredencialsPage.continuebutton()
     }
 
     static doLogin2(testUserData: UserData){
-        CredencialsPage.informCredencials(testUserData.mail, testUserData.password)
+        CredencialsPage.informCredencials(testUserData.email, testUserData.password)
         CredencialsPage.continuebutton()
     }
 }

@@ -1,14 +1,14 @@
 {
     "userValid":{
-        "mail": "mail@mail.com",
-        "passowrd":"password"
+        "email": "mail@mail.com",
+        "password":"password"
     },
     "userMailInvalid":{
-        "mail":"invalid@mail.com",
+        "email":"invalid@mail.com",
         "password":"password"
     },
     "userPasswordInvalid":{
-        "mail":"mail@mail.com",
+        "email":"mail@mail.com",
         "password":"invalid"
     }
 }

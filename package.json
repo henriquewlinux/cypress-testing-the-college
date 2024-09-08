@@ -1,11 +1,11 @@
 {
   "name": "curso-imersao-cypress",
   "version": "1.0.0",
-  "type": "module",
   "description": "Course Imersao Cypress",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run --browser chrome",
+    "cy:open": "cypress open --env env=qa",
+    "cy:run": "cypress run --browser chrome --headless --env env=local --config-file cypress.config.ts",
+    "cy:run:qa": "cypress run --browser chrome --headless --env env=qa --config-file cypress.config.ts",
     "allure:report": "allure serve allure-results",
     "lint": "eslint cypress/**/*.ts",
     "lint:fix": "eslint cypress/**/*.ts --fix"
@@ -30,6 +30,7 @@
     "eslint-plugin-n": "^17.10.2",
     "eslint-plugin-node": "^11.1.0",
     "jsonc-eslint-parser": "^2.4.0",
+    "mongoose": "^8.6.1",
     "typescript": "^5.5.4"
   }
 }
